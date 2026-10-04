@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#171821" />
+  <title>MemoDeck — Learn by Mnemonics</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" aria-label="Main navigation">
+
+      <div class="brand">
+
+        <div class="brand-mark">
+          M
+        </div>
+
+        <div>
+          <strong>MemoDeck</strong>
+          <span>Learn. Recall. Keep it.</span>
+        </div>
+
+      </div>
+
+      <nav class="nav">
+
+        <button
+          class="nav-item active"
+          data-view="home"
+          type="button"
+        >
+          <span>⌂</span> Home
+        </button>
+
+        <button
+          class="nav-item"
+          data-view="library"
+          type="button"
+        >
+          <span>▦</span> Card Library
+        </button>
+
+        <button
+          class="nav-item"
+          data-view="quiz"
+          type="button"
+        >
+          <span>✦</span> Practice Quiz
+        </button>
+
+        <button
+          class="nav-item"
+          data-view="stats"
+          type="button"
+        >
+          <span>◔</span> Progress
+        </button>
+
+      </nav>
+
+      <div class="sidebar-footer">
+
+        <div class="streak-mini">
+
+          <span class="streak-icon">
+            🔥
+          </span>
+
+          <div>
+            <strong id="side-streak">
+              0 day
+            </strong>
+
+            <small>
+              learning streak
+            </small>
+          </div>
+
+        </div>
+
+        <button
+          class="reset-btn"
+          id="reset-progress"
+          type="button"
+        >
+          Reset progress
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+      <!-- TOP BAR -->
+
+      <header class="topbar">
+
+        <button
+          class="mobile-menu"
+          id="mobile-menu"
+          type="button"
+          aria-label="Open navigation"
+        >
+          ☰
+        </button>
+
+        <div class="breadcrumb">
+
+          <span id="crumb">
+            Home
+          </span>
+
+          <span class="dot">
+            •
+          </span>
+
+          <span>
+            Study smarter
+          </span>
+
+        </div>
+
+        <div class="top-actions">
+
+          <button
+            class="icon-btn"
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle appearance"
+          >
+            ☼
+          </button>
+
+          <div class="profile-dot">
+            A
+          </div>
+
+        </div>
+
+      </header>
+
+
+      <!-- ================= HOME ================= -->
+
+      <section
+        id="home-view"
+        class="view active-view"
+      >
+
+        <div class="hero">
+
+          <div>
+
+            <span class="eyebrow">
+              YOUR KNOWLEDGE DECK
+            </span>
+
+            <h1>
+              Learn things you can actually
+              <em>remember.</em>
+            </h1>
+
+            <p>
+              Match each invention with a
+              memorable phrase, then prove
+              it with a four-choice quiz.
+            </p>
+
+            <div class="hero-actions">
+
+              <button
+                class="primary-btn"
+                data-start="learn"
+                type="button"
+              >
+                Start learning
+                <span>→</span>
+              </button>
+
+              <button
+                class="ghost-btn"
+                data-start="quiz"
+                type="button"
+              >
+                Quick quiz
+                <span>✦</span>
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="hero-visual"
+            aria-hidden="true"
+          >
+
+            <div class="float-card back">
+              📞
+              <small>
+                Telephone
+              </small>
+            </div>
+
+            <div class="float-card mid">
+              📻
+              <small>
+                Radio
+              </small>
+            </div>
+
+            <div class="float-card front">
+              🧠
+              <small>
+                Mnemonics
+              </small>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="section-head">
+
+          <div>
+
+            <span class="eyebrow">
+              CONTINUE
+            </span>
+
+            <h2>
+              Pick a deck
+            </h2>
+
+          </div>
+
+          <button
+            class="text-btn"
+            data-view-link="library"
+            type="button"
+          >
+            See all →
+          </button>
+
+        </div>
+
+
+        <div
+          id="home-decks"
+          class="deck-grid"
+        ></div>
+
+
+        <div class="section-head spaced">
+
+          <div>
+
+            <span class="eyebrow">
+              HOW IT WORKS
+            </span>
+
+            <h2>
+              A simple memory loop
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="steps-grid">
+
+          <article class="step-card">
+
+            <span>
+              01
+            </span>
+
+            <div class="step-icon">
+              👀
+            </div>
+
+            <h3>
+              See it
+            </h3>
+
+            <p>
+              Start with the invention and
+              its visual cue.
+            </p>
+
+          </article>
+
+
+          <article class="step-card">
+
+            <span>
+              02
+            </span>
+
+            <div class="step-icon">
+              🧠
+            </div>
+
+            <h3>
+              Hook it
+            </h3>
+
+            <p>
+              Say the mnemonic to link the
+              inventor to the invention.
+            </p>
+
+          </article>
+
+
+          <article class="step-card">
+
+            <span>
+              03
+            </span>
+
+            <div class="step-icon">
+              ✦
+            </div>
+
+            <h3>
+              Recall it
+            </h3>
+
+            <p>
+              Use fewer clues for a harder,
+              higher-scoring recall test.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= LIBRARY ================= -->
+
+      <section
+        id="library-view"
+        class="view"
+        hidden
+      >
+
+        <div class="page-title">
+
+          <div>
+
+            <span class="eyebrow">
+              CARD LIBRARY
+            </span>
+
+            <h1>
+              Choose what to learn
+            </h1>
+
+            <p>
+              Each deck pairs facts with
+              memorable recall cues.
+            </p>
+
+          </div>
+
+          <button
+            class="primary-btn"
+            data-start="learn"
+            type="button"
+          >
+            Study all →
+          </button>
+
+        </div>
+
+
+        <div
+          id="library-decks"
+          class="library-grid"
+        ></div>
+
+      </section>
+
+
+      <!-- ================= STUDY ================= -->
+
+      <section
+        id="study-view"
+        class="view"
+        hidden
+      >
+
+        <div class="study-header">
+
+          <div>
+
+            <button
+              class="back-btn"
+              data-view-link="library"
+              type="button"
+            >
+              ← Library
+            </button>
+
+            <span
+              class="eyebrow"
+              id="study-deck-label"
+            >
+              DECK
+            </span>
+
+            <h1 id="study-title">
+              Learn
+            </h1>
+
+          </div>
+
+
+          <div class="study-progress-wrap">
+
+            <span id="study-counter">
+              1 / 5
+            </span>
+
+            <div class="line-progress">
+
+              <div
+                id="study-progress"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="flash-stage">
+
+          <div
+            id="flashcard"
+            class="flashcard"
+            tabindex="0"
+            aria-label="Learning card. Click to flip."
+          >
+
+            <div class="flash-inner">
+
+              <!-- FRONT -->
+
+              <article class="flash-face flash-front">
+
+                <div class="flash-top">
+
+                  <span id="flash-category">
+                    INVENTORS &amp; MNEMONICS
+                  </span>
+
+                  <span>
+                    ↻ FLIP
+                  </span>
+
+                </div>
+
+                <div
+                  class="visual-art"
+                  id="flash-visual"
+                >
+                  💡
+                </div>
+
+                <span class="small-label">
+                  THE INVENTION
+                </span>
+
+                <h2 id="flash-front-title">
+                  Telephone
+                </h2>
+
+                <p id="flash-front-subtitle">
+                  Flip to reveal the inventor and mnemonic.
+                </p>
+
+                <div class="swipe-hint">
+                  Click the card to reveal more
+                </div>
+
+              </article>
+
+
+              <!-- BACK -->
+
+              <article class="flash-face flash-back">
+
+                <div class="flash-top">
+
+                  <span>
+                    REMEMBER THIS
+                  </span>
+
+                  <span>
+                    ↻ FLIP
+                  </span>
+
+                </div>
+
+
+                <div class="definition">
+
+                  <span class="small-label">
+                    INVENTOR
+                  </span>
+
+                  <h2 id="flash-back-title">
+                  Alexander Graham Bell
+                  </h2>
+
+                  <p id="flash-definition"></p>
+
+                </div>
+
+
+                <div class="hook-box">
+
+                  <span>
+                    🪝 MEMORY HOOK
+                  </span>
+
+                  <strong id="flash-hook"></strong>
+
+                </div>
+
+
+                <div class="fact-box">
+
+                  <span>
+                    💬 QUICK FACT
+                  </span>
+
+                  <p id="flash-fact"></p>
+
+                </div>
+
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="study-controls">
+
+          <button
+            class="secondary-btn"
+            id="study-prev"
+            type="button"
+          >
+            ← Previous
+          </button>
+
+          <button
+            class="primary-btn"
+            id="study-ready"
+            type="button"
+          >
+            I know this →
+          </button>
+
+          <button
+            class="secondary-btn"
+            id="study-next"
+            type="button"
+          >
+            Next →
+          </button>
+
+        </div>
+
+
+        <p class="tip-line">
+          Tip: try answering out loud before you flip the card.
+        </p>
+
+      </section>
+
+
+      <!-- ================= QUIZ ================= -->
+
+      <section
+        id="quiz-view"
+        class="view"
+        hidden
+      >
+
+        <div class="quiz-top">
+
+          <div>
+
+            <span
+              class="eyebrow"
+              id="quiz-deck-label"
+            >
+              PRACTICE
+            </span>
+
+            <h1>
+              Test your memory
+            </h1>
+
+          </div>
+
+          <div class="quiz-score">
+
+            <span>
+              Score
+            </span>
+
+            <strong id="quiz-score">
+              0
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="quiz-progress">
+
+          <div
+            id="quiz-progress"
+          ></div>
+
+        </div>
+
+
+        <div
+          id="quiz-card"
+          class="quiz-card"
+        >
+
+          <div class="quiz-meta">
+
+            <span id="quiz-number">
+              Question 1 of 5
+            </span>
+
+            <span id="quiz-streak">
+              0 correct streak
+            </span>
+
+          </div>
+
+
+          <div
+            class="quiz-art"
+            id="quiz-art"
+          >
+            👕
+          </div>
+
+
+          <span class="small-label">
+            WHICH ONE IS IT?
+          </span>
+
+
+          <h2 id="quiz-question">
+            Who is associated with this invention?
+          </h2>
+
+
+          <p id="quiz-prompt">
+            Use the mnemonic clues and choose an inventor.
+          </p>
+
+
+          <div
+            id="answer-grid"
+            class="answer-grid"
+          ></div>
+
+
+          <div
+            id="quiz-feedback"
+            class="quiz-feedback"
+            hidden
+          ></div>
+
+        </div>
+
+
+        <div class="quiz-footer">
+
+          <button
+            class="text-btn"
+            id="quit-quiz"
+            type="button"
+          >
+            Quit quiz
+          </button>
+
+          <button
+            class="primary-btn"
+            id="next-question"
+            type="button"
+            hidden
+          >
+            Next question →
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= STATS ================= -->
+
+      <section
+        id="stats-view"
+        class="view"
+        hidden
+      >
+
+        <div class="page-title">
+
+          <div>
+
+            <span class="eyebrow">
+              YOUR PROGRESS
+            </span>
+
+            <h1>
+              Memory, measured.
+            </h1>
+
+            <p>
+              See what you have learned and
+              how well you can recall it.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-cards">
+
+          <article>
+
+            <span>
+              Cards studied
+            </span>
+
+            <strong id="stat-studied">
+              0
+            </strong>
+
+            <small>
+              all time
+            </small>
+
+          </article>
+
+
+          <article>
+
+            <span>
+              Quiz accuracy
+            </span>
+
+            <strong id="stat-accuracy">
+              0%
+            </strong>
+
+            <small>
+              four-choice recall
+            </small>
+
+          </article>
+
+
+          <article>
+
+            <span>
+              Best score
+            </span>
+
+            <strong id="stat-best">
+              0
+            </strong>
+
+            <small>
+              single quiz
+            </small>
+
+          </article>
+
+
+          <article>
+
+            <span>
+              Current streak
+            </span>
+
+            <strong id="stat-streak">
+              0
+            </strong>
+
+            <small>
+              days
+            </small>
+
+          </article>
+
+        </div>
+
+
+        <div class="progress-panel">
+
+          <div class="section-head no-margin">
+
+            <div>
+
+              <span class="eyebrow">
+                DECK MASTERY
+              </span>
+
+              <h2>
+                Your library
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <div id="mastery-list"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= RESULTS ================= -->
+
+      <section
+        id="results-view"
+        class="view"
+        hidden
+      >
+
+        <div class="results-card">
+
+          <div class="results-orb">
+            ✦
+          </div>
+
+          <span class="eyebrow">
+            QUIZ COMPLETE
+          </span>
+
+          <h1 id="result-title">
+            Nice recall.
+          </h1>
+
+          <p id="result-subtitle">
+            You finished the deck.
+          </p>
+
+
+          <div class="result-score">
+
+            <strong id="result-score">
+              0
+            </strong>
+
+            <span>
+              / 100
+            </span>
+
+          </div>
+
+
+          <div class="result-stats">
+
+            <div>
+
+              <strong id="result-correct">
+                0
+              </strong>
+
+              <span>
+                correct
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <strong id="result-total">
+                0
+              </strong>
+
+              <span>
+                questions
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <strong id="result-streak">
+                0
+              </strong>
+
+              <span>
+                best streak
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="results-actions">
+
+            <button
+              class="primary-btn"
+              id="retry-quiz"
+              type="button"
+            >
+              Try again →
+            </button>
+
+            <button
+              class="secondary-btn"
+              data-view-link="home"
+              type="button"
+            >
+              Back home
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- FOOTER -->
+
+      <footer class="footer">
+
+        <span>
+          MemoDeck
+        </span>
+
+        <span>
+          Built for active recall · works offline
+        </span>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
